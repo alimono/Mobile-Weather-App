@@ -1,0 +1,25 @@
+{
+  "cwd": "/Users/alissamonova/Documents/Coding_Portfolio/Mobile Weather App",
+  "type": [
+    "capacitor"
+  ],
+  "name": "AintNoSunshine",
+  "pkg": "com.aintnosunshine.app",
+  "framework": "react",
+  "template": "blank",
+  "cssPreProcessor": false,
+  "bundler": "vite",
+  "capacitor": {
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkMode": false,
+    "iconFonts": true
+  },
+  "customBuild": false
+}

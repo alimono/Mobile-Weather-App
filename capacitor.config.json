@@ -1,0 +1,13 @@
+{
+  "appId": "com.aintnosunshine.app",
+  "appName": "AintNoSunshine",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

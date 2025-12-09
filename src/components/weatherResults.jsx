@@ -46,7 +46,7 @@ const WeatherResults = ({ location, dataTrigger, onWeatherReturned }) => {
                     <p>Humidity: {weatherData.main.humidity}%</p>
                     <p>Wind speed: {weatherData.wind.speed} m/s</p>
                     <p>Condition: {weatherData.weather[0].description}</p>
-                    <img src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`} alt={weatherData.weather[0].description} />
+                    <img className="weather-results-icon" src={`https://openweathermap.org/img/wn/${weatherData.weather[0].icon}.png`} alt={weatherData.weather[0].description} />
                 </div>
             )}
         </div>

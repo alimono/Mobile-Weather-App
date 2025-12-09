@@ -71,7 +71,7 @@ const ForecastButton = ({ location }) => {
     return (
         <div className="forecast-button-container">
             <div className="button-wrapper">
-                <button className="forecast-button" onClick={handleCLick}>Get Five Day Forecast</button>
+                <button class="button button-tonal button-round"className="forecast-button" onClick={handleCLick}>Get Five Day Forecast</button>
             </div>
             {error && (<div className="error-message">{error}</div>)}
             

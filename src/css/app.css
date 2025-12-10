@@ -161,6 +161,27 @@
   margin: 10px auto;
 }
 
+/* ---- GEO BUTTON ---- */
+.geo-button {
+  margin: 1rem auto 0 auto;
+  padding: 12px 20px;
+  border-radius: var(--pw-radius);
+  border: none;
+  font-size: 1rem;
+  background: var(--pw-midnight);
+  color: var(--pw-white);
+  cursor: pointer;
+  transition: 0.2s ease;
+  box-shadow: var(--pw-shadow);
+  max-width: 400px;
+  display: block;
+}
+
+.geo-button:hover {
+  background: var(--pw-deep);
+  transform: translateY(-2px);
+}
+
 /* ---- FORECAST BUTTON ---- */
 .forecast-button {
   margin: 1rem auto 0 auto;

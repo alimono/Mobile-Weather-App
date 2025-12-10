@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { Geolocation } from "@capacitor/geolocation";
 
-const WeatherResults = ({ location, dataTrigger, onWeatherReturned }) => {
+const WeatherResults = ({ location, dataTrigger, useGeo, onWeatherReturned }) => {
     const [weatherData, setWeatherData] = useState(null);
     const [error, setError] = useState(null);
     
@@ -14,13 +15,19 @@ const WeatherResults = ({ location, dataTrigger, onWeatherReturned }) => {
 
     //fetch weather data from OpenWeather API, incl. error handling
     const fetchWeatherData = async () => {
-        const cityName = location.trim();
-        if (!cityName) return; //do nothing if input is empty
-
         try {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&appid=${API_key}&units=metric`);
+            let url = "";
+            if (useGeo) {
+                const [lat, lon] = location.split(",");
+                url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_key}&units=metric`;
+            } else {
+                const cityName = location.trim();
+                if (!cityName) return; //do nothing if input is empty
+                url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&appid=${API_key}&units=metric`;
+            }
+            const response = await fetch(url);
             if (!response.ok) {
-                throw new Error("City not found");
+                throw new Error("Location not found");
             }
             const data = await response.json();
             setWeatherData(data);

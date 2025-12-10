@@ -12,6 +12,10 @@ const SearchBar = ({ location, onLocationChange, onSearch }) => {
         }
     }
 
+    const handleClear = () => {
+        if (location.trim() !== "") return onLocationChange(""); // Clear the input field
+    }
+
     return (
         <div className="search-bar-container">
             <div className="input-wrapper">
@@ -27,7 +31,8 @@ const SearchBar = ({ location, onLocationChange, onSearch }) => {
                 placeholder="Type in your city" 
                 value={location} 
                 onChange={handleChange} 
-                onKeyDown={handleKeyPress} />
+                onKeyDown={handleKeyPress}
+                onFocus={handleClear} />
             </div>
         </div>
         

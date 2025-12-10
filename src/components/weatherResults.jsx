@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Geolocation } from "@capacitor/geolocation";
 
 const WeatherResults = ({ location, dataTrigger, useGeo, onWeatherReturned }) => {
     const [weatherData, setWeatherData] = useState(null);

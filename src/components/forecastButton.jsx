@@ -1,7 +1,6 @@
 import { useState } from "react";
 
-
-const ForecastButton = ({ location }) => {
+const ForecastButton = ({ location, useGeo }) => {
     const [forecastData, setForecastData] = useState(null);
     const [error, setError] = useState(null);
     
@@ -10,14 +9,22 @@ const ForecastButton = ({ location }) => {
 
     //fetch day 5 day forecast data from OpenWeather API, incl. error handling / updates every hour
     const fetchForecastData = async () => {
-        const cityName = location.trim();
-        if (!cityName) return; //do nothing if input is empty
-
         try {
-            const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${cityName},${countryCode}&appid=${API_key}&units=metric`);
+            let url = "";
+            if (useGeo) {
+                const [lat, lon] = location.split(",");
+                url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_key}&units=metric`;
+            } else {
+                const cityName = location.trim();
+                if (!cityName) return; //do nothing if input is empty
+                url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName},${countryCode}&appid=${API_key}&units=metric`;
+            }
+
+            const response = await fetch(url);
             if (!response.ok) {
                 throw new Error("No forecast data found");
             }
+
             const data = await response.json();
 
             console.log(data); //log data to check structure

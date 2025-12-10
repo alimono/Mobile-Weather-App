@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Geolocation } from '@capacitor/geolocation';
 import {
   Page,
   Navbar,
@@ -64,7 +65,7 @@ const HomePage = () => {
           dataTrigger={dataTrigger}
           useGeo={useGeo} 
           onWeatherReturned={() => setShowForecast(true)} />
-          {showForecast && <ForecastButton location={location} />}
+          {showForecast && <ForecastButton location={location} useGeo={useGeo} />}
     </Block>
 
   </Page>

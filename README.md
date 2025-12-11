@@ -88,7 +88,7 @@ Once the main features of the app were done, I continued to work on some of the 
 
 I ran into some issues testing my code on a browser, as the SQLite plugin is for mobile devices, and I couldn't get my mobile testing platforms to run to check if this worked, and refactor my code from there to get the right functionality.   
 
-I tried to test this in the browser using jeep-sqlite, and then ran into an issue in the browser, with an error saying jeep was not added to the DOM. I tried to add this in app.jsx but at this stage, I decided to leave this optional features, as even if it did work, I would keep coding until the render and functionality was smooth, and this was taking / would take more time.
+I tried to test this in the browser using jeep-sqlite, and then ran into an issue in the browser, with an error saying jeep was not added to the DOM. I tried to add this in app.jsx but at this stage, I decided to leave this optional feature, as even if it did work, I would keep coding until the render and functionality was smooth, and this was taking / would take more time.
 
 I commented out all the SQLite code I attempted to prevent any errors in the existing, functioning code. 
 
@@ -106,4 +106,4 @@ Thanks for reading!
 
 ## PS
 
-One last thing, I was going to attempt this app in TypeScript, but in the Framework 7 setup it defaulted to JavaScript without the option to choose TypeScript, so I initially tried to manually install TypeScript and convert the project to JavaScript, but things got sticky pretty quick so I defaulted back to JavaScript, as TypeScript wasn't a strict requirement in the brief.
+One last thing, I was going to attempt this app in TypeScript, but in the Framework 7 setup it defaulted to JavaScript without the option to choose TypeScript, so I initially tried to manually install TypeScript and convert the project to TypeScript, but things got sticky pretty quick so I defaulted back to JavaScript, as TypeScript wasn't a strict requirement in the brief.

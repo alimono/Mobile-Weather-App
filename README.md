@@ -103,3 +103,7 @@ Anything is possible with more time, better tech!
 Also, prioritise tesing earlier on.
 
 Thanks for reading!
+
+## PS
+
+One last thing, I was going to attempt this app in TypeScript, but in the Framework 7 setup it defaulted to JavaScript without the option to choose TypeScript, so I initially tried to manually install TypeScript and convert the project to JavaScript, but things got sticky pretty quick so I defaulted back to JavaScript, as TypeScript wasn't a strict requirement in the brief.

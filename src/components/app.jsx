@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+// import { use, useEffect } from 'react';
+// import { initDB, initSQLiteWeb } from '../services/dbService.js';
 import { getDevice }  from 'framework7/lite-bundle';
 import {
   f7,
@@ -48,6 +49,24 @@ const MyApp = () => {
     }
     // Call F7 APIs here
   });
+
+  /* TRIED TO GET THIS TO WORK IN THE DOM TO RESOLVE ERRORS ABOUT JEEP-SQLITE NOT BEING IN THE DOM,
+  DIDN'T WORK, SO COMMENTED OUT FOR NOW */
+  // useEffect(() => {
+  //   if (!document.querySelector('jeep-sqlite')) {
+  //     const jeepSqlite = document.createElement('jeep-sqlite');
+  //     document.body.appendChild(jeepSqlite);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   initSQLiteWeb();
+  // }, []);
+
+  // useEffect(() => {
+  //   // Initialize the database when the app starts
+  //   initDB();
+  // }, []);
 
   return (
     <App { ...f7params }>

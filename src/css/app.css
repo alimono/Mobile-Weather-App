@@ -58,6 +58,12 @@
     text-align: center;
 }
 
+/* ---- Panel block ---- */
+.panel-block {
+  padding: 2rem;
+  background: var(--pw-light);
+}
+
 /* ---- Welcome block ---- */
 .welcome-block {
   color: var(--pw-midnight);

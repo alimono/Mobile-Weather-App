@@ -4,12 +4,18 @@ import {
   Page,
   Navbar,
   NavTitle,
+  NavRight,
+  Link,
   NavTitleLarge,
   Block,
+  Panel,
+  View
 } from 'framework7-react';
 import SearchBar from '../components/searchbar.jsx';  
 import WeatherResults from '../components/weatherResults.jsx';
 import ForecastButton from '../components/forecastButton.jsx';
+import RecentSearch from '../components/recentSearch.jsx';
+import Favourites from '../components/favourites.jsx';
 
 const HomePage = () => {
   const [location, setLocation] = useState("");
@@ -19,6 +25,7 @@ const HomePage = () => {
 
   //function to handle search action from SearchBar component
   const handleSearch = () => {
+    if (location.trim() === "") return; //do nothing if input is empty
     setShowForecast(false); //hide forecast button until weather data is fetched
     setUseGeo(false); //regular search, not geolocation
     setDataTrigger(prev => prev + 1); //increment to trigger useEffect in WeatherResults
@@ -38,37 +45,54 @@ const HomePage = () => {
     }
   };
   
-  return(
-  
-  <Page name="home">
-    {/* Top Navbar */}
-    <Navbar className="top-nav">
-      <NavTitle>Ain't No Sunshine 🌦️</NavTitle>
-      <NavTitleLarge>Ain't No Sunshine 🌦️</NavTitleLarge>
-    </Navbar>
-    {/* Page content */}
-    <Block strong className="welcome-block">
-      <h3>The UK's newest weather App</h3>
-      <p>Get the current weather and a 5-day forecast for cities in the UK.</p>
-    </Block>
-    <Block>
-      <button class="button button-tonal button-round"className="geo-button" onClick={handleGeoLocation}>Use My Location</button>
-    </Block>
-    {/*In this block we pass props from parent to child components*/}
-    <Block strong className='weather-render'>
-          <SearchBar 
-          location={location} 
-          onLocationChange={setLocation} 
-          onSearch={handleSearch} /> 
-          <WeatherResults 
-          location={location} 
-          dataTrigger={dataTrigger}
-          useGeo={useGeo} 
-          onWeatherReturned={() => setShowForecast(true)} />
-          {showForecast && <ForecastButton location={location} useGeo={useGeo} />}
-    </Block>
+  return (
+  <View>
 
-  </Page>
+    {/* Panel Right lives outside page */}
+    <Panel right cover>
+      <View>
+        <Page>
+          <Block strong className="panel-block">
+            <RecentSearch />
+            <Favourites />
+          </Block>
+        </Page>
+      </View>
+    </Panel>
+    <Page name="home">
+      {/* Top Navbar */}
+      <Navbar className="top-nav">
+        <NavTitle>Ain't No Sunshine 🌦️</NavTitle>
+        <NavTitleLarge>Ain't No Sunshine 🌦️</NavTitleLarge>
+          {/* Right NavBar Icon for Panel */}
+          <NavRight>
+            <Link panelOpen="right" iconIos="f7:menu" iconMd="material:menu" />
+        </NavRight>
+      </Navbar>
+
+      {/* Page content */}
+      <Block strong className="welcome-block">
+        <h3>The UK's newest weather App</h3>
+        <p>Get the current weather and a 5-day forecast for cities in the UK.</p>
+      </Block>
+      <Block>
+        <button class="button button-tonal button-round"className="geo-button" onClick={handleGeoLocation}>Use My Location</button>
+      </Block>
+      {/*In this block we pass props from parent to child components*/}
+      <Block strong className='weather-render'>
+            <SearchBar 
+            location={location} 
+            onLocationChange={setLocation} 
+            onSearch={handleSearch} /> 
+            <WeatherResults 
+            location={location} 
+            dataTrigger={dataTrigger}
+            useGeo={useGeo} 
+            onWeatherReturned={() => setShowForecast(true)} />
+            {showForecast && <ForecastButton location={location} useGeo={useGeo} />}
+      </Block>
+    </Page>
+  </View>
 )
 };
 export default HomePage;
